@@ -197,7 +197,7 @@ export default function Chat({ articleTitle, articleContent, articleKey }: ChatP
             </div>
             <p className="font-medium text-white">Ask me anything about this article!</p>
             <p className="text-sm mt-2 text-gray-400 leading-relaxed">
-              I'm powered by Perplexity AI with real-time web search capabilities. I can help you understand key points, provide context, analyze implications, or search for the latest information about related topics.
+              I&apos;m powered by Perplexity AI with real-time web search capabilities. I can help you understand key points, provide context, analyze implications, or search for the latest information about related topics.
             </p>
             
             {/* Suggested prompts */}

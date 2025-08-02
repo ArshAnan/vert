@@ -116,7 +116,7 @@ export default function NewsFeed({ initialArticles }: NewsFeedProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // Don't handle navigation keys if user is typing in an input field
-      const activeElement = document.activeElement;
+      const activeElement = document.activeElement as HTMLElement;
       const isTyping = activeElement && (
         activeElement.tagName === 'INPUT' ||
         activeElement.tagName === 'TEXTAREA' ||
