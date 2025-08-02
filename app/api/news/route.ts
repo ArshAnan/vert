@@ -6,6 +6,9 @@ const NEWS_API_KEY = process.env.NEWS_API_KEY;
 const NEWS_API_BASE_URL = 'https://newsapi.org/v2';
 
 export async function GET(request: NextRequest) {
+  console.log('News API route called');
+  console.log('NEWS_API_KEY exists:', !!NEWS_API_KEY);
+  
   if (!NEWS_API_KEY) {
     console.log('News API key not configured, returning mock data');
     // Return mock data instead of error when API key is missing
@@ -91,6 +94,8 @@ export async function GET(request: NextRequest) {
   const country = searchParams.get('country') || 'us';
 
   try {
+    console.log('Making request to News API with params:', { category, country, page, pageSize });
+    
     const response = await axios.get(`${NEWS_API_BASE_URL}/top-headlines`, {
       params: {
         apiKey: NEWS_API_KEY,
@@ -101,6 +106,9 @@ export async function GET(request: NextRequest) {
       },
     });
 
+    console.log('News API response status:', response.status);
+    console.log('News API response data length:', response.data?.articles?.length || 0);
+    
     const data: NewsApiResponse = response.data;
 
     // Filter out articles with null/missing images or content
@@ -119,6 +127,25 @@ export async function GET(request: NextRequest) {
 
   } catch (error) {
     console.error('News API error:', error);
+    
+    if (axios.isAxiosError(error)) {
+      console.error('Axios error details:', {
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        data: error.response?.data,
+        message: error.message
+      });
+      
+      // Return detailed error information for debugging
+      return NextResponse.json({
+        error: 'News API request failed',
+        details: {
+          status: error.response?.status,
+          statusText: error.response?.statusText,
+          message: error.response?.data?.message || error.message
+        }
+      }, { status: 500 });
+    }
     
     // Return a simple error response if the API call fails
     return NextResponse.json(

@@ -7,20 +7,27 @@ async function getInitialNews(): Promise<NewsArticle[]> {
       ? `https://${process.env.VERCEL_URL}` 
       : 'http://localhost:3000';
     
+    console.log('Fetching news from:', `${baseUrl}/api/news?pageSize=5`);
+    
     const response = await fetch(`${baseUrl}/api/news?pageSize=5`, {
       cache: 'no-store', // Always fetch fresh data
     });
+    
+    console.log('Response status:', response.status);
+    console.log('Response ok:', response.ok);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch news: ${response.status}`);
     }
     
     const data = await response.json();
+    console.log('Response data:', data);
     
     if (data.error) {
       throw new Error(data.error);
     }
     
+    console.log('Articles found:', data.articles?.length || 0);
     return data.articles || [];
   } catch (error) {
     console.error('Failed to fetch initial news:', error);
