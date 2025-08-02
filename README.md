@@ -80,6 +80,23 @@ Fetches real-time news from various sources and categories.
 | `PERPLEXITY_API_KEY` | Your Perplexity AI API key | Yes |
 | `NEWS_API_KEY` | Your NewsAPI.org API key | Yes |
 
+## Deployment
+
+### Vercel Deployment
+
+1. **Push your code to GitHub**
+2. **Connect to Vercel**: Go to [vercel.com](https://vercel.com) and import your repository
+3. **Configure Environment Variables**: In your Vercel project settings, add the following environment variables:
+   - `PERPLEXITY_API_KEY`: Your Perplexity AI API key
+   - `NEWS_API_KEY`: Your NewsAPI.org API key
+4. **Deploy**: Vercel will automatically deploy your app
+
+### Important Notes
+
+- **Without API Keys**: If you don't configure the API keys, the app will show sample news articles instead of real news
+- **Chat Functionality**: The chat feature requires the `PERPLEXITY_API_KEY` to work properly
+- **Real News**: To get real news articles, you must configure the `NEWS_API_KEY`
+
 ## License
 
 MIT

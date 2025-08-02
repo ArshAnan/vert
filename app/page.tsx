@@ -12,10 +12,15 @@ async function getInitialNews(): Promise<NewsArticle[]> {
     });
     
     if (!response.ok) {
-      throw new Error('Failed to fetch news');
+      throw new Error(`Failed to fetch news: ${response.status}`);
     }
     
     const data = await response.json();
+    
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    
     return data.articles || [];
   } catch (error) {
     console.error('Failed to fetch initial news:', error);
