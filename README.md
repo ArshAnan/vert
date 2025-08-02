@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vert - News App with AI Chat
 
-## Getting Started
+A modern news application built with Next.js that features real-time news feeds and AI-powered chat functionality using Perplexity's Sonar API for web-enabled conversations.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Real-time News Feed**: Get the latest news from various categories
+- **AI Chat with Web Search**: Ask questions about news articles and get real-time information from the web
+- **Modern UI**: Beautiful, responsive design with smooth animations
+- **Web-Enabled AI**: Powered by Perplexity's Sonar API for access to current information
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS
+- **AI**: Perplexity Sonar API (with web search capabilities)
+- **News**: NewsAPI.org
+- **Icons**: Lucide React
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup
 
-## Learn More
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd vert
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Environment Variables**
+   Create a `.env.local` file in the root directory with the following variables:
+   ```env
+   PERPLEXITY_API_KEY=your_perplexity_api_key_here
+   NEWS_API_KEY=your_news_api_key_here
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Get API Keys**
+   - **Perplexity API**: Sign up at [Perplexity AI](https://www.perplexity.ai/) and get your API key
+   - **News API**: Sign up at [NewsAPI.org](https://newsapi.org/) and get your API key
 
-## Deploy on Vercel
+5. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Configuration
+
+### Perplexity Sonar API
+The app uses Perplexity's `sonar-medium-online` model which provides:
+- Real-time web search capabilities
+- Access to current information
+- Enhanced context awareness for news discussions
+
+### News API
+Fetches real-time news from various sources and categories.
+
+## Usage
+
+1. **Browse News**: Scroll through the latest news articles
+2. **Chat with AI**: Click on any article to start a conversation
+3. **Ask Questions**: The AI can answer questions about the article and provide additional real-time information from the web
+
+## Development
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `PERPLEXITY_API_KEY` | Your Perplexity AI API key | Yes |
+| `NEWS_API_KEY` | Your NewsAPI.org API key | Yes |
+
+## License
+
+MIT
